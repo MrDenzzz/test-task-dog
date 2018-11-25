@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import router from '../router'
+
 Vue.use(Vuex)
 axios.defaults.baseURL = 'https://dog.ceo/api'
 
@@ -62,8 +64,12 @@ const actions = {
 
   getBreedImages: async (context, payload) => {
     context.commit('START_LOADER')
+    try {
       let {data} = await axios.get(`/breed/${payload.breed}/images/random/20`)
       context.commit('SET_IMAGES', data)
+    } catch (e) {
+      router.push('/404')
+    }
   }
 }
 

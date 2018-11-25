@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ListDogs from '@/components/ListDogs'
+import ListFavourites from '@/components/ListFavourites'
 
 Vue.use(Router)
 
